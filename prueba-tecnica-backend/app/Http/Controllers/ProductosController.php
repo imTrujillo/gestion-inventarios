@@ -148,4 +148,36 @@ class ProductosController extends Controller
         }
         return response()->json(['message' => 'Producto no encontrado'], 404);
     }
+
+    public function filtrar_producto_precio($precio)
+    {
+        $validator = Validator::make(['precio' => $precio], [
+            'precio' => 'required|numeric|between:0,999999.99'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'message' => 'Error de búsqueda',
+                'errors' => $validator->errors()
+            ], 400);
+        }
+
+        $productos = Productos::where('precio', '<', $precio)->get();
+
+        if ($productos != null) {
+            return response()->json($productos, 200);
+        }
+        return response()->json(['message' => 'Producto no encontrado'], 404);
+    }
+
+    public function filtrar_producto_cantidad($cantidadActual)
+    {
+
+        $productos = Productos::where('cantidadActual', '<', $cantidadActual)->get();
+
+        if ($productos != null) {
+            return response()->json($productos, 200);
+        }
+        return response()->json(['message' => 'Producto no encontrado'], 404);
+    }
 }

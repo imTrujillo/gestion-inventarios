@@ -13,6 +13,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/v1/productos', [ProductosController::class, 'index']);
     Route::post('/v1/productos', [ProductosController::class, 'store']);
     Route::get('/v1/productos/{nombre}', [ProductosController::class, 'buscar_producto_nombre']);
+    Route::get('/v1/productos/filtrarprecio/{precio}', [ProductosController::class, 'filtrar_producto_precio']);
+    Route::get('/v1/productos/filtrarcantidad/{cantidad}', [ProductosController::class, 'filtrar_producto_cantidad']);
     Route::patch('/v1/productos/{id}', [ProductosController::class, 'update']);
     Route::delete('/v1/productos/{id}', [ProductosController::class, 'destroy']);
 
