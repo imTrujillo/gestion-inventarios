@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
 
 export default function Products({
   propNombre,
@@ -44,12 +45,11 @@ export default function Products({
 
   const editarProducto = (id) => {
     if (
-      !nombre ||
-      !descripcion ||
-      !precio ||
-      !cantidadInicial ||
-      !estado ||
-      !movimiento
+      nombre.trim() === "" ||
+      descripcion.trim() === "" ||
+      precio === "" ||
+      cantidadInicial === "" ||
+      movimiento === ""
     ) {
       Swal.fire({
         title: "Formulario incompleto",
@@ -58,6 +58,7 @@ export default function Products({
       });
       return;
     }
+
     if (isNaN(precio) || isNaN(cantidadInicial) || isNaN(movimiento)) {
       Swal.fire({
         title: "Campos con valores incorrectos",
@@ -77,7 +78,7 @@ export default function Products({
       descripcion,
       precio: numPrecio,
       cantidadInicial: numCantidadInicial,
-      estado: estado,
+      estado,
       movimiento: numMovimiento,
       cantidadTotal: numCantidadTotal,
     };
@@ -93,10 +94,14 @@ export default function Products({
         }
       )
       .then((response) => {
-        const actualizarProductos = listProducts.map((producto) =>
-          producto.id === id ? response.data : producto
+        const actualizado = response.data;
+
+        setListProducts((prevState) =>
+          prevState.map((producto) =>
+            producto.id === actualizado.id ? actualizado : producto
+          )
         );
-        setListProducts(actualizarProductos);
+
         Swal.fire({
           title: "!Operación exitosa!",
           text: "Se actualizó el producto",

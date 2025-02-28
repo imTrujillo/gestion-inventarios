@@ -2,10 +2,19 @@ import React, { useEffect, useState } from "react";
 import Form from "../components/Form";
 import ListProducts from "../components/ListProducts";
 import Navbar from "../routes/Navbar";
+import { useNavigate } from "react-router-dom";
 
 export default function Inventario() {
   const [usuario, SetUsuario] = useState(null);
   const [listProducts, setListProducts] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   return (
     <div>
