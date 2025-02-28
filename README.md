@@ -16,16 +16,16 @@
 8. Activar el servidor de react con el comando npm run dev
 
 # Base de Datos Clever-Cloud:
-HOST: b1djjylruicppvjwy9eq-mysql.services.clever-cloud.com
-Nombre: prueba-tecnica-mysql
-Database name: b1djjylruicppvjwy9eq
-Database User: uufc27ixu1wkwehe
-Password: Y6TeRjIPaFJZLSNdOj8U
+- HOST: b1djjylruicppvjwy9eq-mysql.services.clever-cloud.com
+- Nombre: prueba-tecnica-mysql
+- Database name: b1djjylruicppvjwy9eq
+- Database User: uufc27ixu1wkwehe
+- Password: Y6TeRjIPaFJZLSNdOj8U
 
 # Variables de Entorno de MailTrap
-MAIL_MAILER=smtp
-MAIL_HOST=sandbox.smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=1ff3f93bb1a47a
-MAIL_PASSWORD=6561f22fb4ef81
+- MAIL_MAILER=smtp
+- MAIL_HOST=sandbox.smtp.mailtrap.io
+- MAIL_PORT=2525
+- MAIL_USERNAME=1ff3f93bb1a47a
+- MAIL_PASSWORD=6561f22fb4ef81
 
